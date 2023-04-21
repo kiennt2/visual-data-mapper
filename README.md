@@ -212,9 +212,36 @@ import "visual-data-mapping/css/style.css"
 </html>
 ```
 
+## API
+```javascript
+setConfigs({...})
+
+destroy()
+
+execute()
+```
+
 ## Screenshot
 Main
 ![Main](https://raw.githubusercontent.com/kiennt2/visual-data-mapper/main/screenshot/main.png)
+
+Target Tree
+![Target Tree](https://raw.githubusercontent.com/kiennt2/visual-data-mapper/main/screenshot/targe%20tree.png)
+
+Target Import
+![Target Import](https://raw.githubusercontent.com/kiennt2/visual-data-mapper/main/screenshot/target%20import.png)
+
+Source Tree
+![Source Tree](https://raw.githubusercontent.com/kiennt2/visual-data-mapper/main/screenshot/source%20tree.png)
+
+Source Import
+![Source Import](https://raw.githubusercontent.com/kiennt2/visual-data-mapper/main/screenshot/source%20import.png)
+
+Output
+![Output](https://raw.githubusercontent.com/kiennt2/visual-data-mapper/main/screenshot/output.png)
+
+Options
+![Options](https://raw.githubusercontent.com/kiennt2/visual-data-mapper/main/screenshot/options.png)
 
 ## Roadmap
 - [ ] Utils Function & UI & UX
