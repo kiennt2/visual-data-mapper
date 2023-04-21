@@ -51,6 +51,7 @@
         "es5/",
         "es6/",
         "css/",
-        "example/"
+        "example/",
+        "screenshot/"
     ]
 }
