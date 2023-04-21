@@ -1,0 +1,56 @@
+{
+    "name": "visual-data-mapper",
+    "version": "1.0.0",
+    "description": "Visual Data Mapping - JSON Mapping - Object Mapping - JS - Javascript - Typescript",
+    "main": "src/index.ts",
+    "scripts": {
+        "dev": "npx nodemon",
+        "generate": "npm run clean && tsc && tsc --project ./tsconfig-es5.json && tsc --project ./tsconfig-es6.json && npm run bundle && npm run style && npm run copy",
+        "clean": "rimraf ./common && rimraf ./es5 && rimraf ./es6",
+        "bundle": "node ./build-bundle.js",
+        "style": "sass --no-source-map ./src/style.scss ./src/style.css",
+        "removeFiles": "rimraf ./example/bundle.js && rimraf ./example/style.css && rimraf ./css",
+        "copy": "npm run removeFiles && copyfiles -f ./bundle/bundle.js ./example && copyfiles -f ./src/style.css ./example && copyfiles -f ./src/style.css ./css && copyfiles -f ./src/style.scss ./css"
+    },
+    "author": "Kien Nguyen <kien.hnaptech@gmail.com> (https://github.com/kiennt2)",
+    "bugs": {
+        "url": "https://github.com/kiennt2/visual-data-mapper/issues"
+    },
+    "homepage": "https://github.com/kiennt2/visual-data-mapper",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kiennt2/visual-data-mapper.git"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@types/kind-of": "^6.0.0",
+        "@types/lodash": "^4.14.192",
+        "@types/uuid": "^9.0.1",
+        "json-tree-view": "^0.4.12",
+        "kind-of": "^6.0.3",
+        "lodash": "^4.17.21",
+        "map-factory": "^3.8.5",
+        "strict-event-emitter": "^0.5.0",
+        "uuid": "^9.0.0",
+        "@babel/preset-env": "^7.21.4",
+        "@types/node": "^18.15.11",
+        "babelify": "^10.0.0",
+        "browserify": "^17.0.0",
+        "copyfiles": "^2.4.1",
+        "nodemon": "^2.0.22",
+        "rimraf": "^4.4.1",
+        "sass": "^1.62.0",
+        "ts-node": "^10.9.1",
+        "tsify": "^5.0.4",
+        "typescript": "^5.0.3"
+    },
+    "files": [
+        "src/",
+        "common/",
+        "bundle/",
+        "es5/",
+        "es6/",
+        "css/",
+        "example/"
+    ]
+}

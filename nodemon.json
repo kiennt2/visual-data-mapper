@@ -1,0 +1,14 @@
+{
+    "watch": [
+        "src"
+    ],
+    "ext": ".ts,.js,.scss",
+    "ignore": [
+        "src/example/**/*",
+        "src/common/**/*",
+        "src/es5/**/*",
+        "src/es6/**/*",
+        "src/bundle/**/*"
+    ],
+    "exec": "npm run bundle && npm run style && npm run copy"
+}

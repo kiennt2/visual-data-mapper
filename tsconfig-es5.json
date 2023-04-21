@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        /* Visit https://aka.ms/tsconfig to read more about this file */
+        "target": "es2015",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "module": "es2015",
+        "rootDir": "src",
+        "moduleResolution": "node",
+        "allowJs": true,
+        "outDir": "es5",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "src/**/*.spec.ts",
+        "node_modules"
+    ]
+}

@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+html, body {margin: 0;padding: 0;
+    * {box-sizing: border-box;}
+}
+.jmp-wrap { position: relative;}
+.jmp-wrap,
+.jmp-popup { box-sizing: border-box; font-family: 'Roboto Slab', serif; font-size: 14px;
+    * { box-sizing: border-box;
+        &::-webkit-scrollbar {width: 8px;height: 8px;background-color: #f5f5f5;}
+        &::-webkit-scrollbar-track {border-radius: 8px;background: rgba(0, 0, 0, 0.1);border: 1px solid #ccc;}
+        &::-webkit-scrollbar-thumb {border-radius: 8px;background: #e4e4e4;border: 1px solid #aaa;}
+        &::-webkit-scrollbar-thumb:hover {background: #fff;}
+        &::-webkit-scrollbar-thumb:active {background: #22add4;}
+    }
+    button {
+        font-family: 'Roboto Slab', serif;
+        background-color: #e1ecf4;
+        border-radius: 3px;
+        border: 1px solid #7aa7c7;
+        box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+        box-sizing: border-box;
+        color: #39739d;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+        margin: 0;
+        outline: none;
+        padding: 4px .8em;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        white-space: nowrap;
+        text-transform: capitalize;
+    }
+    input,
+    textarea {
+        margin: 0;
+        outline: none;
+        background-color: #e1ecf4;
+        border-radius: 3px;
+        border: 1px solid #7aa7c7;
+        box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+        color: #39739d;
+        line-height: 1;
+        font-size: 14px;
+        padding: 5px 10px;
+        min-height: 31px;
+    }
+    textarea {padding: 8px 10px;}
+    button,
+    input,
+    textarea {
+        &[readonly] {opacity: 0.75; cursor: default}
+        &:disabled {opacity: 0.5; cursor: default}
+    }
+}
+.jmp-sections,
+.jmp-popup {
+    button {transition: all 0.15s linear;}
+    button:hover,
+    button:focus {background-color: #b3d3ea;color: #2c5777;}
+    button:focus {box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);}
+    button:active {background-color: #a0c7e4;box-shadow: none;color: #2c5777;}
+    button + button {margin-left: 10px;}
+}
+.jmp-tabs { padding: 15px 20px 0;position: relative;z-index: 10;
+    button {
+        position: relative;
+        width: 12em;
+        display: inline-block;
+        padding: 13px 15px 9px 15px;
+        color: #666;
+        text-decoration: none;
+        margin: 0;
+        background: transparent;
+        border: none;
+        font-weight: 500;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    button:before {
+        border: 1px solid #ccc;
+        transform-origin: bottom;
+    }
+    button:before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+        border-bottom: none;
+        border-radius: .4em .4em 0 0;
+        background: #fafafa;
+        transform: scale(1.2, 1.3) perspective(.5em) rotateX(5deg);
+    }
+}
+[data-tab=table] .jmp-tabs button[data-tab=table] {z-index: 2; color: #000;
+    &:before {background-color: #eee;margin-bottom: -.06em;}
+}
+[data-tab=output] .jmp-tabs button[data-tab=output] {z-index: 2; color: #000;
+    &:before {background-color: #eee;margin-bottom: -.06em;}
+}
+[data-tab=options] .jmp-tabs button[data-tab=options] {z-index: 2; color: #000;
+    &:before {background-color: #eee;margin-bottom: -.06em;}
+}
+.jmp-sections {position: relative;z-index: 5;}
+.jmp-header {display: flex; justify-content: space-between; align-items: center; align-content: center; }
+.jmp-popup { position: fixed; z-index: 999; top: 0; display: flex; width: 33.33333%;height: 100%;background: #fff;transition: all 0.15s ease-in-out; padding: 15px;
+    &.jmp-target-popup {left: -33.33333%;
+        &[data-show=tree],
+        &[data-show=import] {left: 0; border: 1px solid #ccc; border-left: none;}
+    }
+    &.jmp-source-popup {right: -33.33333%; border: 1px solid #ccc; border-right: none;
+        &[data-show=tree],
+        &[data-show=import] {right: 0;}
+    }
+    .jmp-popup-header > div {display: flex;justify-content: space-between; align-items: center; align-content: center; padding-bottom: 15px; margin-bottom: 15px; border-bottom: 1px solid #ccc;}
+    .jmp-popup-title {display: none; font-weight: 500; font-size: 16px;}
+    .jmp-popup-block {position: absolute;left: -99999px;top: -99999px; height: 100%;overflow: auto; display: flex;}
+    .jmp-popup-layout {display: flex;flex-direction: column; width: 100%; height: 100%; overflow: hidden; }
+    .jmp-popup-content {flex: 1; position: relative; height: 100%; overflow: hidden;}
+}
+.jmp-tree-with-filter {display: flex;flex-direction: column; width: 100%; height: 100%; overflow: hidden;
+    .jmp-tree-filter { border-bottom: 1px solid #ccc; padding-bottom: 15px;margin-bottom: 15px; position: relative;
+        input {width: 100%; padding-right: 45px;}
+        .jmp-filter-icon {position: absolute;right: 8px;top: 0;z-index: 1; font-size: 20px;}
+        + div {flex: 1; position: relative; height: 100%; overflow: auto;}
+    }
+}
+.jmp-import-wrap { display: flex;flex-direction: column; width: 100%; height: 100%; overflow: hidden;
+    .jmp-import-body {flex: 1; height: 100%; padding-bottom: 15px;}
+    textarea {width: 100%;height: 100%;}
+}
+[data-show=tree] {
+    .jmp-tree-title {display: inherit;}
+    .jmp-target-tree-wrap,
+    .jmp-source-tree-wrap {position: static;left: auto;top: auto;}
+}
+.jmp-tree-title {
+    button {margin-left: 11px; font-size: 12px; line-height: 1; padding: 4px 8px;}
+}
+[data-show=import] {
+    .jmp-import-title {display: inherit;}
+    .jmp-target-import,
+    .jmp-source-import {position: static;left: auto;top: auto;}
+}
+.jmp-table-wrap { position: relative; width: 100%; }
+.jmp-table { border-collapse: separate; border-spacing: 0;width: 100%;
+    thead { position: sticky; top: 0; z-index: 1; }
+    tr td,
+    tr th { border: 1px solid #ccc;padding: 6px 12px; border-top: none;border-right: none;
+        &:last-child {border-right: 1px solid #ccc;}
+    }
+    thead tr:first-child {
+        td, th {border-top: 1px solid #ccc;}
+    }
+    thead tr td,
+    thead tr th { padding: 10px 12px; background: #eee;}
+    tbody tr:nth-child(2n) td,
+    tbody tr:nth-child(2n) th { background: #fafafa;}
+    th {font-weight: 500;}
+    .source-fields { display: flex; flex-direction: column; justify-content: center; align-content: center;align-items: center}
+    .type-mismatch { color: red}
+    .type-combine { color: blue; font-weight: bold; letter-spacing: 1px;}
+    .source-path + .source-path { margin-top: 6px;}
+    .source-path .source-path-input { display: flex; }
+    .transform-value,
+    .default-value { display: flex; }
+    textarea,
+    input { margin: 0 auto; width: 250px;}
+    button + button {margin-left: 10px;}
+    .source-path-input .input-field {position: relative;margin-right: 10px;
+        input.has-data {padding-right: 45px;}
+    }
+    .clear-source-path-data {position: absolute;right: 0;top: 0;}
+    tr[data-disabled=true] {
+        td, th {color: rgba(0, 0, 0, 0.5)}
+    }
+}
+.jmp-output-section,
+.jmp-options-section {position: absolute;left: -99999px;top: -999999px;}
+[data-tab="output"] {
+    .jmp-output-section {position: relative;left: auto;top: auto;}
+    .jmp-table-section {position: absolute;left: -99999px;top: -999999px;}
+}
+[data-tab="options"] {
+    .jmp-options-section {position: relative;left: auto;top: auto;}
+    .jmp-table-section {position: absolute;left: -99999px;top: -999999px;}
+}
+.jmp-copy-btn {text-transform: capitalize;}
+//
+.jmp-output-block {display: flex;border: 1px solid #ccc;}
+.jmp-output-code,
+.jmp-output-data {width: 50%;}
+.jmp-output-title {background: #eee;padding: 15px; font-weight: bold;}
+.jmp-output-area { padding: 15px; position: relative;
+    textarea { width: 100%; height: 750px; display: block;margin: 0; font-size: 13px;}
+    .jmp-copy-btn {position: absolute;top: 15px;right: 15px;z-index: 2;}
+}
+.jmp-options-form { display: flex;flex-direction: column; width: 100%; height: 100%; overflow: hidden; padding: 0 0 10px; border-top: 1px solid #ccc; justify-content: center; align-items: center; align-content: center;
+    .jmp-options-area {border-top: 49px solid #eee; padding: 0 30px; width: 100%;}
+    .jmp-options-content { width: 100%; max-width: 500px; margin: 30px auto; display: block; position: relative;}
+    textarea {width: 100%; display: block; height: 650px; font-size: 13px;}
+    .jmp-copy-btn {position: absolute;top: 0;right: 0;z-index: 2;}
+}
+/*
+
+ */
+.jsonView {
+    margin-left: 20px;
+    font-family: Consolas, "Lucida Console", Menlo, "dejavu sans mono", monospace;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 2px;
+    cursor: default;
+    color: rgb(66, 66, 66);
+    white-space: nowrap;
+    -webkit-user-select: none;
+    [contenteditable="true"]:focus {outline: 1px solid #7aa7c7; background: #e1ecf4; border-radius: 3px;}
+}
+.jsonView > div {
+    display: inline-block;
+}
+.jsonView.hidden {
+    display: none;
+}
+.jsonView > .children, .jsonView.insert {
+    display: block;
+}
+.jsonView > .name {
+    color: rgb(136, 19, 145);
+}
+.jsonView > .separator:before {
+    content: ":";
+}
+.jsonView > .separator {
+    padding-right: 5px;
+}
+.jsonView > .spacing {
+    display: inline-block;
+    width: 15px;
+}
+.jsonView > .spacing::before {
+    content: '1';
+    visibility: hidden;
+}
+.jsonView > .value.null, .jsonView > .value.undefined {
+    color: rgb(128, 128, 128);
+}
+.jsonView > .value.boolean, .jsonView > .value.number {
+    color: rgb(28, 0, 207);
+}
+.jsonView > .value.string:not(.edit):before, .jsonView > .value.string:not(.edit):after {
+    content: "\"";
+}
+.jsonView > .value.string {
+    color: rgb(196, 26, 22);
+}
+.jsonView > .name:hover, .jsonView > .value:hover {
+    background-color: rgba(56, 121, 217, 0.1);
+}
+.jsonView > .expand, .jsonView > .collapse {
+    min-width: 20px;
+    margin-left: -20px;
+    cursor: pointer;
+    transition: all 0.15s linear;
+}
+.jsonView > .expand:before {
+    content: '\25B6';
+    font-size: 11px;
+}
+.jsonView > .collapse:before {
+    content: '\25BC';
+}
+.jsonView > .edit {
+    padding: 0px 5px 0px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: transparent;
+}
+.jsonView > .edit br {
+    display: none;
+}
+.jsonView > .edit * {
+    display: inline;
+    white-space: nowrap;
+}
+.jsonView > .value.edit {
+    color: rgb(0, 0, 0);
+}
+.jsonView > .delete:before {
+    content: '+';
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    display: inline-block;
+}
+.jsonView > .delete {
+    opacity: 0;
+    display: inline;
+    padding: 3px;
+    cursor: pointer;
+    color: rgb(150, 150, 150);
+}
+.jsonView > .item:hover ~ .delete {
+    opacity: 1;
+    color: rgb(150, 150, 150);
+}
+.jsonView > .delete:hover {
+    opacity: 1;
+    color: rgb(0, 0, 0);
+    background: rgb(220, 220, 220);
+}
+.jsonView.readonly > .insert, .jsonView.readonly > .delete {
+    display: none !important;
+}
+.jsonView > .insert:before {
+    content: '+';
+}
+.jsonView > .insert {
+    display: none;
+    color: rgb(150, 150, 150);
+    cursor: pointer;
+}
+.jsonView.expanded > .insert, .jsonView.expanded > .insert {
+    display: inline-block;
+    margin-left: 20px;
+    padding: 3px;
+}
+.jsonView > .insert:hover {
+    color: rgb(0, 0, 0);
+    background: rgb(220, 220, 220);
+}

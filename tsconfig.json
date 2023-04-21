@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        /* Visit https://aka.ms/tsconfig to read more about this file */
+        "target": "es2016",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "module": "commonjs",
+        "rootDir": "src",
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "outDir": "common",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "src/**/*.spec.ts",
+        "node_modules"
+    ]
+}
