@@ -213,6 +213,8 @@ import "visual-data-mapping/css/style.css"
 ```
 
 ## Screenshot
+Main
+![Main](https://raw.githubusercontent.com/kiennt2/visual-data-mapper/main/screenshot/main.png)
 
 ## Roadmap
 - [ ] Utils Function & UI & UX
