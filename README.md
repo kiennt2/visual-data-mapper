@@ -7,34 +7,34 @@ This package use some another package to Render JSON Tree ( [json-tree-view](htt
 
 ## Install
 ```javascript
-npm i visual-data-mapping
+npm i visual-data-mapper
 ```
 
 ## Usage
 
 ```javascript
 // Typescript
-import JsonMapping from "visual-data-mapping"
+import JsonMapping from "visual-data-mapper"
 const instance = new JsonMapping({...})
 
 // ES
-// import JsonMapping from "visual-data-mapping/es5"
+// import JsonMapping from "visual-data-mapper/es5"
 //
-// import JsonMapping from "visual-data-mapping/es6"
+// import JsonMapping from "visual-data-mapper/es6"
 //
 
 // Require
-// const DataMapping = require("visual-data-mapping/bundle/bundle.js")
+// const DataMapping = require("visual-data-mapper/bundle/bundle.js")
 // const instance = new DataMapping.JsonMapping({...})
 
-import "visual-data-mapping/css/style.css"
+import "visual-data-mapper/css/style.css"
 // OR SCSS
-// import "visual-data-mapping/css/style.scss"
+// import "visual-data-mapper/css/style.scss"
 
 // CSS Import
-// @import "visual-data-mapping/css/style.scss";
+// @import "visual-data-mapper/css/style.scss";
 // OR
-// @import "visual-data-mapping/css/style.css";
+// @import "visual-data-mapper/css/style.css";
 ```
 
 ## Options
