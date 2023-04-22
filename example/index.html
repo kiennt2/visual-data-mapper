@@ -2,248 +2,339 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Visual Data Mapping - JSON Mapping - Object Mapping</title>
+    <title>Visual Data Mapping - JSON Mapping - Object Mapping - Array Mapping - Fields Mapping</title>
+    <meta name="author" content="Kien Nguyen <kien.hnaptech@gmail.com> (https://github.com/kiennt2)">
+    <meta name="description"
+          content="Visual Data Mapping, JSON Mapping, Object Mapping, Array Mapping, Fields Mapping, Data Mapper, JSON Mapper, Object Mapper, Fields Mapper">
+    <meta name="keywords"
+          content="Visual Data Mapping, JSON Mapping, Object Mapping, Array Mapping, Fields Mapping, Data Mapper, JSON Mapper, Object Mapper, Fields Mapper">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            align-content: center;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: rgb(15, 23, 42);
+            background: linear-gradient(310deg, rgba(15, 23, 42, 1) 0%, rgba(45, 64, 107, 1) 100%);;
+        }
+
+        .site-header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .site-header a {
+            cursor: pointer;
+        }
+
+        .site-header .icons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            align-content: center;
+        }
+
+        .site-header svg {
+            display: block;
+            height: 26px;
+            width: auto;
+            margin: 0;
+        }
+
+        .doc-link svg {
+            height: 24px;
+        }
+
+        .github-link,
+        .npm-link {
+            margin-left: 20px;
+        }
+
+        .npm-link svg {
+            height: 20px;
+        }
+
+    </style>
 </head>
 <body>
+<div class="site-header">
+    <h1>Visual Data Mapper</h1>
+    <div>
+        <div class="icons">
+            <a href="https://github.com/kiennt2/visual-data-mapper/blob/main/README.md" target="_blank"
+               title="Documents" class="doc-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 121.83">
+                    <path fill="rgb(133, 156, 208)" fill-rule="evenodd"
+                          d="M102.42,37H81.92a8.52,8.52,0,0,1-8.85-8.7V7.53H21a.58.58,0,0,0-.41.18.45.45,0,0,0-.18.42V113.71a.7.7,0,0,0,.18.41.51.51,0,0,0,.41.18h80.84c.18,0,.17-.09.26-.18s.34-.28.34-.41V37Zm7.47,79.08a5.77,5.77,0,0,1-5.76,5.76H18.66a5.77,5.77,0,0,1-5.76-5.76V5.76a5.7,5.7,0,0,1,1.69-4.07A5.77,5.77,0,0,1,18.66,0H76.9a4.22,4.22,0,0,1,2.46.82l29.75,30.12a2.57,2.57,0,0,1,.78,2.6v82.53ZM80,27.69,79.57,9.63,100.66,31l-18.14-.81A2.4,2.4,0,0,1,80,27.69Z"/>
+                    <path fill="rgb(69, 102, 172)" fill-rule="evenodd"
+                          d="M6.71,46.28H116.17A6.73,6.73,0,0,1,122.88,53v45.1a6.73,6.73,0,0,1-6.71,6.71H6.71A6.73,6.73,0,0,1,0,98.09V53a6.73,6.73,0,0,1,6.71-6.71Z"/>
+                    <path fill="#fff"
+                          d="M12.5,59.78H27a17.41,17.41,0,0,1,6.91,1.16,11.26,11.26,0,0,1,4.36,3.33,14,14,0,0,1,2.49,5,23.36,23.36,0,0,1,.77,6.11,21.16,21.16,0,0,1-1.15,7.84,12.77,12.77,0,0,1-3.19,4.66,10.27,10.27,0,0,1-4.39,2.51,22.26,22.26,0,0,1-5.8.86H12.5V59.78Zm9.73,7.13V84.13h2.39A10.16,10.16,0,0,0,29,83.45a4.67,4.67,0,0,0,2-2.36,14.84,14.84,0,0,0,.73-5.48c0-3.34-.54-5.62-1.64-6.85s-2.9-1.85-5.43-1.85Zm21.92,8.65q0-7.71,4.3-12t12-4.3q7.86,0,12.13,4.22T76.82,75.3A19.36,19.36,0,0,1,75,84.36a13.26,13.26,0,0,1-5.38,5.5,17.7,17.7,0,0,1-8.77,2A20.24,20.24,0,0,1,52,90.14a13.29,13.29,0,0,1-5.66-5.38,17.8,17.8,0,0,1-2.18-9.2Zm9.73,0c0,3.18.6,5.47,1.78,6.86a6,6,0,0,0,4.84,2.08,6,6,0,0,0,4.87-2q1.72-2,1.72-7.33c0-3-.6-5.13-1.79-6.49a6.15,6.15,0,0,0-4.88-2.06,6,6,0,0,0-4.75,2.09c-1.19,1.38-1.79,3.69-1.79,6.89Zm48,2.82L110.38,81a15.54,15.54,0,0,1-2.72,6,11.72,11.72,0,0,1-4.59,3.64,17.3,17.3,0,0,1-7,1.22,20.27,20.27,0,0,1-8.41-1.49,13.33,13.33,0,0,1-5.62-5.25,17.79,17.79,0,0,1-2.37-9.62q0-7.81,4.16-12t11.79-4.2q6,0,9.37,2.41a14.1,14.1,0,0,1,5.06,7.4L101.49,71a7.54,7.54,0,0,0-.95-2.09,5.73,5.73,0,0,0-2-1.71,5.83,5.83,0,0,0-2.65-.6,5.76,5.76,0,0,0-5.09,2.65c-.88,1.32-1.33,3.39-1.33,6.2,0,3.49.52,5.88,1.59,7.17a6.29,6.29,0,0,0,8.7.37,9.79,9.79,0,0,0,2.08-4.55Z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/kiennt2/visual-data-mapper" target="_blank" title="github - visual data mapper"
+               class="github-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="26" height="26">
+                    <path fill="#fff"
+                          d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+            </a>
+            <a href="https://www.npmjs.com/package/visual-data-mapper" target="_blank"
+               title="npm - visual data mapper" class="npm-link">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="540px" height="210px"
+                     viewBox="0 0 18 7">
+                    <path fill="rgb(133, 156, 208)"
+                          d="M0,0h18v6H9v1H5V6H0V0z M1,5h2V2h1v3h1V1H1V5z M6,1v5h2V5h2V1H6z M8,2h1v2H8V2z M11,1v4h2V2h1v3h1V2h1v3h1V1H11z"/>
+                    <polygon fill="#FFFFFF" points="1,5 3,5 3,2 4,2 4,5 5,5 5,1 1,1 "/>
+                    <path fill="#FFFFFF" d="M6,1v5h2V5h2V1H6z M9,4H8V2h1V4z"/>
+                    <polygon fill="#FFFFFF" points="11,1 11,5 13,5 13,2 14,2 14,5 15,5 15,2 16,2 16,5 17,5 17,1 "/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
 <div id="my-mapping"></div>
 <script src="bundle.js"></script>
 <script>
 
-const mockTarget = {
-    'menu': {
-        'id'   : 'file',
-        'value': 'File',
-        'popup': {
-            'yyy'     : [
-                {'value': 'Open', 'onclick': 'OpenDoc()'},
-                {'value': 'Close', 'onclick': 'CloseDoc()'}
-            ],
-            'menuitem': [
-                [
+    const mockTarget = {
+        'menu': {
+            'id': 'file',
+            'value': 'File',
+            'popup': {
+                'yyy': [
+                    {'value': 'Open', 'onclick': 'OpenDoc()'},
+                    {'value': 'Close', 'onclick': 'CloseDoc()'}
+                ],
+                'menuitem': [
                     [
-                        {'value': 'Open', 'onclick': 'OpenDoc()'},
-                        {'value': 'Close', 'onclick': 'CloseDoc()'}
+                        [
+                            {'value': 'Open', 'onclick': 'OpenDoc()'},
+                            {'value': 'Close', 'onclick': 'CloseDoc()'}
+                        ]
                     ]
                 ]
+            },
+            'xxx': [
+                [
+                    {'value': 'New', 'onclick': 'CreateNewDoc()'}
+                ],
+                [
+                    {'value': 'Open', 'onclick': 'OpenDoc()'},
+                    {'value': 'Close', 'onclick': 'CloseDoc()'}
+                ]
             ]
-        },
-        'xxx'  : [
-            [
-                {'value': 'New', 'onclick': 'CreateNewDoc()'}
-            ],
-            [
-                {'value': 'Open', 'onclick': 'OpenDoc()'},
-                {'value': 'Close', 'onclick': 'CloseDoc()'}
-            ]
-        ]
-    }
-}
-//
-//
-
-
-const mockSource = {
-    'web-app': {
-        'servlet'        : [
-            {
-                'servlet-name' : 'cofaxCDS',
-                'servlet-class': 'org.cofax.cds.CDSServlet',
-                'init-param'   : {
-                    'configGlossary:installationAt': 'Philadelphia, PA',
-                    'configGlossary:adminEmail'    : 'ksm@pobox.com',
-                    'configGlossary:poweredBy'     : 'Cofax',
-                    'configGlossary:poweredByIcon' : '/images/cofax.gif',
-                    'configGlossary:staticPath'    : '/content/static',
-                    'templateProcessorClass'       : 'org.cofax.WysiwygTemplate',
-                    'templateLoaderClass'          : 'org.cofax.FilesTemplateLoader',
-                    'templatePath'                 : 'templates',
-                    'templateOverridePath'         : '',
-                    'defaultListTemplate'          : 'listTemplate.htm',
-                    'defaultFileTemplate'          : 'articleTemplate.htm',
-                    'useJSP'                       : false,
-                    'jspListTemplate'              : 'listTemplate.jsp',
-                    'jspFileTemplate'              : 'articleTemplate.jsp',
-                    'cachePackageTagsTrack'        : 200,
-                    'cachePackageTagsStore'        : 200.123,
-                    'cachePackageTagsRefresh'      : 60,
-                    'cacheTemplatesTrack'          : 100,
-                    'cacheTemplatesStore'          : 50,
-                    'cacheTemplatesRefresh'        : 15,
-                    'cachePagesTrack'              : 200,
-                    'cachePagesStore'              : 100,
-                    'cachePagesRefresh'            : 10,
-                    'cachePagesDirtyRead'          : 10,
-                    'searchEngineListTemplate'     : 'forSearchEnginesList.htm',
-                    'searchEngineFileTemplate'     : 'forSearchEngines.htm',
-                    'searchEngineRobotsDb'         : 'WEB-INF/robots.db',
-                    'useDataStore'                 : true,
-                    'dataStoreClass'               : 'org.cofax.SqlDataStore',
-                    'redirectionClass'             : 'org.cofax.SqlRedirection',
-                    'dataStoreName'                : 'cofax',
-                    'dataStoreDriver'              : 'com.microsoft.jdbc.sqlserver.SQLServerDriver',
-                    'dataStoreUrl'                 : 'jdbc:microsoft:sqlserver://LOCALHOST:1433;DatabaseName=goon',
-                    'dataStoreUser'                : 'sa',
-                    'dataStorePassword'            : 'dataStoreTestQuery',
-                    'dataStoreTestQuery'           : 'SET NOCOUNT ON;select test=\'test\';',
-                    'dataStoreLogFile'             : '/usr/local/tomcat/logs/datastore.log',
-                    'dataStoreInitConns'           : 10,
-                    'dataStoreMaxConns'            : 100,
-                    'dataStoreConnUsageLimit'      : 100,
-                    'dataStoreLogLevel'            : 'debug',
-                    'maxUrlLength'                 : 500
-                }
-            },
-            {
-                'servlet-name' : 'cofaxEmail',
-                'servlet-class': 'org.cofax.cds.EmailServlet',
-                'init-param'   : {
-                    'mailHost'        : 'mail1',
-                    'mailHostOverride': 'mail2'
-                }
-            },
-            {
-                'servlet-name' : 'cofaxAdmin',
-                'servlet-class': 'org.cofax.cds.AdminServlet'
-            },
-
-            {
-                'servlet-name' : 'fileServlet',
-                'servlet-class': 'org.cofax.cds.FileServlet'
-            },
-            {
-                'servlet-name' : 'cofaxTools',
-                'servlet-class': 'org.cofax.cms.CofaxToolsServlet',
-                'init-param'   : {
-                    'templatePath'       : 'toolstemplates/',
-                    'log'                : 1,
-                    'logLocation'        : '/usr/local/tomcat/logs/CofaxTools.log',
-                    'logMaxSize'         : '',
-                    'dataLog'            : 1,
-                    'dataLogLocation'    : '/usr/local/tomcat/logs/dataLog.log',
-                    'dataLogMaxSize'     : '',
-                    'removePageCache'    : '/content/admin/remove?cache=pages&id=',
-                    'removeTemplateCache': '/content/admin/remove?cache=templates&id=',
-                    'fileTransferFolder' : '/usr/local/tomcat/webapps/content/fileTransferFolder',
-                    'lookInContext'      : 1,
-                    'adminGroupID'       : 4,
-                    'betaServer'         : true
-                }
-            }],
-        'servlet-mapping': {
-            'cofaxCDS'   : '/',
-            'cofaxEmail' : '/cofaxutil/aemail/*',
-            'cofaxAdmin' : '/admin/*',
-            'fileServlet': '/static/*',
-            'cofaxTools' : '/tools/*'
-        },
-
-        'taglib': {
-            'taglib-uri'     : 'cofax.tld',
-            'taglib-location': '/WEB-INF/tlds/cofax.tld'
         }
     }
-}
+    //
+    //
 
-const instance = new DataMappingBundle.JsonMapping({
-    container                      : 'my-mapping',
-    target                         : mockTarget,
-    shortenTarget                  : true,
-    targetTreeReadOnly             : false,
-    source                         : mockSource,
-    shortenSource                  : true,
-    disableChildWhenParentHasSource: true,
-    indent                         : 15,
-    windowProp                     : 'myJM',
-    popupAttach                    : undefined,
-    text                           : {
-        tabMapping           : 'Mapping',
-        tabOutput            : 'Output',
-        tabOptions           : 'Options',
-        editTargetBtn        : 'Edit Target',
-        importTargetBtn      : 'Import Target (JSON)',
-        viewSourceBtn        : 'View Source',
-        importSourceBtn      : 'Import Source (JSON)',
-        theadTargetTitle     : 'Target Object',
-        theadSourceTitle     : 'Source Object',
-        theadCol1            : 'Fields',
-        theadCol2            : 'Value Type',
-        theadCol3            : 'Value Type',
-        theadCol4            : 'Fields',
-        theadCol5            : 'Transform Data',
-        theadCol6            : 'Default Value',
-        outputTitle          : 'Output',
-        codeTitle            : 'Code',
-        resetOptionsBtn      : 'Reset To Default',
-        loadCurrentOptionsBtn: 'Load Current Options',
-        applyOptionsBtn      : 'Apply',
-        popupTargetTitle     : 'Target',
-        importTargetTitle    : 'Target Import',
-        expandCollapseBtn    : 'Expand / Collapse',
-        closeTargetPopupBtn  : '✕',
-        doImportTargetBtn    : 'Import',
-        popupSourceTitle     : 'Source',
-        importSourceTitle    : 'Source Import',
-        closeSourcePopupBtn  : '✕',
-        doImportSourceBtn    : 'Import',
-        sourceFilterIcon     : '🔎',
-        rowClearInputBtn     : '✕',
-        rowSelectPathBtn     : '≡',
-        rowAddPathBtn        : '+',
-        rowRemovePathBtn     : '−',
-        dataTypeCombined     : '...',
-        copyBtn              : 'copy'
+
+    const mockSource = {
+        'web-app': {
+            'servlet': [
+                {
+                    'servlet-name': 'cofaxCDS',
+                    'servlet-class': 'org.cofax.cds.CDSServlet',
+                    'init-param': {
+                        'configGlossary:installationAt': 'Philadelphia, PA',
+                        'configGlossary:adminEmail': 'ksm@pobox.com',
+                        'configGlossary:poweredBy': 'Cofax',
+                        'configGlossary:poweredByIcon': '/images/cofax.gif',
+                        'configGlossary:staticPath': '/content/static',
+                        'templateProcessorClass': 'org.cofax.WysiwygTemplate',
+                        'templateLoaderClass': 'org.cofax.FilesTemplateLoader',
+                        'templatePath': 'templates',
+                        'templateOverridePath': '',
+                        'defaultListTemplate': 'listTemplate.htm',
+                        'defaultFileTemplate': 'articleTemplate.htm',
+                        'useJSP': false,
+                        'jspListTemplate': 'listTemplate.jsp',
+                        'jspFileTemplate': 'articleTemplate.jsp',
+                        'cachePackageTagsTrack': 200,
+                        'cachePackageTagsStore': 200.123,
+                        'cachePackageTagsRefresh': 60,
+                        'cacheTemplatesTrack': 100,
+                        'cacheTemplatesStore': 50,
+                        'cacheTemplatesRefresh': 15,
+                        'cachePagesTrack': 200,
+                        'cachePagesStore': 100,
+                        'cachePagesRefresh': 10,
+                        'cachePagesDirtyRead': 10,
+                        'searchEngineListTemplate': 'forSearchEnginesList.htm',
+                        'searchEngineFileTemplate': 'forSearchEngines.htm',
+                        'searchEngineRobotsDb': 'WEB-INF/robots.db',
+                        'useDataStore': true,
+                        'dataStoreClass': 'org.cofax.SqlDataStore',
+                        'redirectionClass': 'org.cofax.SqlRedirection',
+                        'dataStoreName': 'cofax',
+                        'dataStoreDriver': 'com.microsoft.jdbc.sqlserver.SQLServerDriver',
+                        'dataStoreUrl': 'jdbc:microsoft:sqlserver://LOCALHOST:1433;DatabaseName=goon',
+                        'dataStoreUser': 'sa',
+                        'dataStorePassword': 'dataStoreTestQuery',
+                        'dataStoreTestQuery': 'SET NOCOUNT ON;select test=\'test\';',
+                        'dataStoreLogFile': '/usr/local/tomcat/logs/datastore.log',
+                        'dataStoreInitConns': 10,
+                        'dataStoreMaxConns': 100,
+                        'dataStoreConnUsageLimit': 100,
+                        'dataStoreLogLevel': 'debug',
+                        'maxUrlLength': 500
+                    }
+                },
+                {
+                    'servlet-name': 'cofaxEmail',
+                    'servlet-class': 'org.cofax.cds.EmailServlet',
+                    'init-param': {
+                        'mailHost': 'mail1',
+                        'mailHostOverride': 'mail2'
+                    }
+                },
+                {
+                    'servlet-name': 'cofaxAdmin',
+                    'servlet-class': 'org.cofax.cds.AdminServlet'
+                },
+
+                {
+                    'servlet-name': 'fileServlet',
+                    'servlet-class': 'org.cofax.cds.FileServlet'
+                },
+                {
+                    'servlet-name': 'cofaxTools',
+                    'servlet-class': 'org.cofax.cms.CofaxToolsServlet',
+                    'init-param': {
+                        'templatePath': 'toolstemplates/',
+                        'log': 1,
+                        'logLocation': '/usr/local/tomcat/logs/CofaxTools.log',
+                        'logMaxSize': '',
+                        'dataLog': 1,
+                        'dataLogLocation': '/usr/local/tomcat/logs/dataLog.log',
+                        'dataLogMaxSize': '',
+                        'removePageCache': '/content/admin/remove?cache=pages&id=',
+                        'removeTemplateCache': '/content/admin/remove?cache=templates&id=',
+                        'fileTransferFolder': '/usr/local/tomcat/webapps/content/fileTransferFolder',
+                        'lookInContext': 1,
+                        'adminGroupID': 4,
+                        'betaServer': true
+                    }
+                }],
+            'servlet-mapping': {
+                'cofaxCDS': '/',
+                'cofaxEmail': '/cofaxutil/aemail/*',
+                'cofaxAdmin': '/admin/*',
+                'fileServlet': '/static/*',
+                'cofaxTools': '/tools/*'
+            },
+
+            'taglib': {
+                'taglib-uri': 'cofax.tld',
+                'taglib-location': '/WEB-INF/tlds/cofax.tld'
+            }
+        }
     }
-})
 
-instance.on('change', (targetSchema, sourceSchema, mappingFields, code) => {
-    console.log('change')
-    console.log(targetSchema)
-    console.log(sourceSchema)
-    console.log(mappingFields)
-    console.log(code)
-})
-instance.on('output', (data) => {
-    console.log('output')
-    console.log(data)
-})
-instance.on('targetImport', obj => {
-    console.log('target-import')
-    console.log(obj)
-})
-instance.on('sourceImport', obj => {
-    console.log('source-import')
-    console.log(obj)
-})
-instance.on('configs', (oldConf, newConf) => {
-    console.log('configs')
-    console.log(oldConf)
-    console.log(newConf)
-})
+    const instance = new DataMappingBundle.JsonMapping({
+        container: 'my-mapping',
+        target: mockTarget,
+        shortenTarget: true,
+        targetTreeReadOnly: false,
+        source: mockSource,
+        shortenSource: true,
+        disableChildWhenParentHasSource: true,
+        indent: 15,
+        windowProp: 'myJM',
+        popupAttach: undefined,
+        text: {
+            tabMapping: 'Mapping',
+            tabOutput: 'Output',
+            tabOptions: 'Options',
+            editTargetBtn: 'Edit Target',
+            importTargetBtn: 'Import Target (JSON)',
+            viewSourceBtn: 'View Source',
+            importSourceBtn: 'Import Source (JSON)',
+            theadTargetTitle: 'Target Object',
+            theadSourceTitle: 'Source Object',
+            theadCol1: 'Fields',
+            theadCol2: 'Value Type',
+            theadCol3: 'Value Type',
+            theadCol4: 'Fields',
+            theadCol5: 'Transform Data',
+            theadCol6: 'Default Value',
+            outputTitle: 'Output',
+            codeTitle: 'Code',
+            resetOptionsBtn: 'Reset To Default',
+            loadCurrentOptionsBtn: 'Load Current Options',
+            applyOptionsBtn: 'Apply',
+            popupTargetTitle: 'Target',
+            importTargetTitle: 'Target Import',
+            expandCollapseBtn: 'Expand / Collapse',
+            closeTargetPopupBtn: '✕',
+            doImportTargetBtn: 'Import',
+            popupSourceTitle: 'Source',
+            importSourceTitle: 'Source Import',
+            closeSourcePopupBtn: '✕',
+            doImportSourceBtn: 'Import',
+            sourceFilterIcon: '🔎',
+            rowClearInputBtn: '✕',
+            rowSelectPathBtn: '≡',
+            rowAddPathBtn: '+',
+            rowRemovePathBtn: '−',
+            dataTypeCombined: '...',
+            copyBtn: 'copy'
+        }
+    })
 
-// document.getElementById('update-config-btn')?.addEventListener('click', () => {
-//     instance.setConfigs(...)
-// })
-//
-// OR
-//
-// window.myJM.setConfigs(...)
+    instance.on('change', (targetSchema, sourceSchema, mappingFields, code) => {
+        console.log('change')
+        console.log(targetSchema)
+        console.log(sourceSchema)
+        console.log(mappingFields)
+        console.log(code)
+    })
+    instance.on('output', (data) => {
+        console.log('output')
+        console.log(data)
+    })
+    instance.on('targetImport', obj => {
+        console.log('target-import')
+        console.log(obj)
+    })
+    instance.on('sourceImport', obj => {
+        console.log('source-import')
+        console.log(obj)
+    })
+    instance.on('configs', (oldConf, newConf) => {
+        console.log('configs')
+        console.log(oldConf)
+        console.log(newConf)
+    })
 
-// document.getElementById('destroy-btn')?.addEventListener('click', () => {
-//     instance.destroy()
-// })
-//
-// OR
-//
-// window.myJM.destroy()
+    // document.getElementById('update-config-btn')?.addEventListener('click', () => {
+    //     instance.setConfigs(...)
+    // })
+    //
+    // OR
+    //
+    // window.myJM.setConfigs(...)
 
-// document.getElementById('execute-btn')?.addEventListener('click', () => {
-//     const data = instance.execute()
-// })
-//
-// OR
-//
-// window.myJM.execute()
+    // document.getElementById('destroy-btn')?.addEventListener('click', () => {
+    //     instance.destroy()
+    // })
+    //
+    // OR
+    //
+    // window.myJM.destroy()
+
+    // document.getElementById('execute-btn')?.addEventListener('click', () => {
+    //     const data = instance.execute()
+    // })
+    //
+    // OR
+    //
+    // window.myJM.execute()
 
 </script>
 </body>
