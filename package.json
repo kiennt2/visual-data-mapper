@@ -1,6 +1,6 @@
 {
     "name": "visual-data-mapper",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Visual Data Mapping - JSON Mapping - Object Mapping - JS - Javascript - Typescript",
     "main": "src/index.ts",
     "scripts": {
