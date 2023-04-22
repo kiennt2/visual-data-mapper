@@ -5,6 +5,9 @@ That is why I create this package, aim to resolve my issue first but public for 
 
 This package use some another package to Render JSON Tree ( [json-tree-view](https://github.com/luyuan/json-tree-view) ) and ([map-factory](https://github.com/midknight41/map-factory)) for data mapping. You can visit these package for more details.
 
+
+### [Live Demo](https://kiennt2.github.io/visual-data-mapper/)
+
 ## Install
 ```javascript
 npm i visual-data-mapper
