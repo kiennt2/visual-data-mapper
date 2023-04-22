@@ -97,7 +97,7 @@ import "visual-data-mapper/css/style.css"
 
 ## Example
 
-**[Live Demo](https://kiennt2.github.io/visual-data-mapper/)**
+### [Live Demo](https://kiennt2.github.io/visual-data-mapper/)
 
 ```html
 <!DOCTYPE html>
